@@ -104,38 +104,40 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Container buildButton({ String text, Future<dynamic> function }) {
-    return Container(
-      padding: EdgeInsets.only(top: 2.0),
-      child: FlatButton(
-        onPressed: () {
-          if(currentUserId == widget.profileId) {
-            return Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfile(currentUserId: currentUserId)));
-          }
-          else if(isFollowing) {
-            return handleUnfollowUser();
-          }
-          else if(!isFollowing) {
-            return handleFollowUser();
-          }
-        },
-        child: Container(
-          width: 250.0,
-          height: 27.0,
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isFollowing ? Colors.black : Colors.white,
-              fontWeight: FontWeight.bold,
+  Flexible buildButton({ String text, Future<dynamic> function }) {
+    return Flexible(
+      child: Container(
+        padding: EdgeInsets.only(top: 2.0),
+        child: FlatButton(
+          onPressed: () {
+            if (widget.profileId == currentUserId) {
+              return Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      EditProfile(currentUserId: currentUserId)));
+            } else if (isFollowing) {
+              return handleUnfollowUser();
+            } else if (!isFollowing) {
+              return handleFollowUser();
+            }
+          },
+          child: Container(
+            width: 250.0,
+            height: 27.0,
+            child: Text(
+              text,
+              style: TextStyle(
+                color: isFollowing ? Colors.black : Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: isFollowing ? Colors.white : Colors.blue,
-            border: Border.all(
-              color: isFollowing ? Colors.grey : Colors.blue,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isFollowing ? Colors.white : Colors.blue,
+              border: Border.all(
+                color: isFollowing ? Colors.grey : Colors.blue,
+              ),
+              borderRadius: BorderRadius.circular(5.0),
             ),
-            borderRadius: BorderRadius.circular(5.0),
           ),
         ),
       ),
