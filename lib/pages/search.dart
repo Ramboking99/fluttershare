@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttershare/models/user.dart';
 import 'package:fluttershare/pages/home.dart';
+import 'package:fluttershare/pages/profile.dart';
 import 'package:fluttershare/widgets/progress.dart';
 
 class Search extends StatefulWidget {
@@ -117,7 +118,7 @@ class UserResult extends StatelessWidget {
       child: Column(
         children: <Widget>[
           GestureDetector(
-            onTap: () => print('tapped'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(profileId: user.id,))),
             child: ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.grey,
