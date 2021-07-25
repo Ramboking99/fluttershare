@@ -124,11 +124,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: PageView(
         children: <Widget>[
-          //Timeline(),
-          RaisedButton(
-            onPressed: logout,
-            child: Text('Logout'),
-          ),
+          Timeline(),
           ActivityFeed(),
           Upload(currentUser: currentUser,),
           Search(),

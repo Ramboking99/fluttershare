@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttershare/pages/home.dart';
 import 'package:fluttershare/widgets/header.dart';
 import 'package:fluttershare/widgets/progress.dart';
 
@@ -53,6 +54,10 @@ class _TimelineState extends State<Timeline> {
     }
   }
 
+  logout() {
+    googleSignIn.signOut();
+  }
+
 //  Future<QuerySnapshot> getUsers() async {
 ////    final QuerySnapshot snapshot = await usersRef
 ////        .where("postsCount", isLessThan: 3)
@@ -94,9 +99,27 @@ class _TimelineState extends State<Timeline> {
             return circularProgress();
           }
           final List<Text> children = snapshot.data.documents.map((doc) => Text(doc['username'])).toList();
-          return Container(
-            child: ListView(
-              children: children,
+          // return Container(
+          //   child: ListView(
+          //     children: children,
+          //   ),
+          // );
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Follow users to see their posts',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: logout,
+                  child: Text('Logout'),
+                ),
+              ],
             ),
           );
         },

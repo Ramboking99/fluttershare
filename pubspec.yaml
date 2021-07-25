@@ -33,8 +33,7 @@ dependencies:
   firebase_messaging: ^6.0.16
   timeago: ^2.0.26
   cached_network_image:
-  flutter_svg:
-
+  flutter_svg: ^0.18.0
 
 dev_dependencies:
   flutter_test:
